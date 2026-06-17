@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIÁVEIS DE DESIGN & DESIGN SYSTEM (REFINADO)
+   1. VARIÁVEIS DE DESIGN & DESIGN SYSTEM
    ========================================================================== */
 :root {
     --bg-main: #030712;
@@ -7,7 +7,6 @@
     --bg-card: rgba(17, 24, 39, 0.45);
     --bg-card-hover: rgba(31, 41, 55, 0.65);
     
-    /* Paleta Cyber-Glow Avançada */
     --accent-danger: #ff3344;
     --accent-danger-glow: rgba(255, 51, 68, 0.25);
     --accent-secure: #00f2fe;
@@ -15,13 +14,11 @@
     --accent-warning: #ffb703;
     --accent-warning-glow: rgba(255, 183, 3, 0.15);
     
-    /* Tipografia e Textos */
     --text-light: #ffffff;
     --text-main: #f3f4f6;
     --text-muted: #9ca3af;
     --text-dark: #030712;
 
-    /* Efeitos de Vidro e Sombras */
     --border-glass: rgba(255, 255, 255, 0.05);
     --border-active: rgba(0, 242, 254, 0.3);
     --shadow-main: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
@@ -33,7 +30,7 @@
 }
 
 /* ==========================================================================
-   2. RESET & FUNDO ANIMADO PREMIUM
+   2. RESET & FUNDO ANIMADO
    ========================================================================== */
 * {
     margin: 0;
@@ -51,7 +48,6 @@ body {
     position: relative;
 }
 
-/* Luzes de fundo com animação sutil (Aurora Boreal Tech) */
 body::before, body::after {
     content: '';
     position: fixed;
@@ -85,7 +81,6 @@ body::after {
     padding: 0 2rem;
 }
 
-/* Títulos Refinados */
 .center-title {
     text-align: center;
     margin-bottom: 5rem;
@@ -109,7 +104,7 @@ body::after {
 }
 
 /* ==========================================================================
-   3. HEADER E NAVBAR (GLASSMORPHISM INTEGRAL)
+   3. HEADER E NAVBAR
    ========================================================================== */
 .main-header {
     background: rgba(3, 7, 18, 0.4);
@@ -186,7 +181,7 @@ body::after {
 }
 
 /* ==========================================================================
-   4. HERO SECTION COM REFINAMENTO TIPOGRÁFICO
+   4. HERO SECTION
    ========================================================================== */
 .hero-section {
     padding: 8rem 0;
@@ -304,7 +299,7 @@ body::after {
 }
 
 /* ==========================================================================
-   5. CARDS DE DADOS E PILARES (DESIGN MINIMALISTA PREMIUM)
+   5. CARDS DE DADOS E PILARES
    ========================================================================== */
 .stats-section, .pilares-section, .comunidade-section {
     padding: 7rem 0;
@@ -390,7 +385,7 @@ body::after {
 }
 
 /* ==========================================================================
-   6. VERIFICADOR DE URLS (INTERATIVIDADE ESTILIZADA)
+   6. VERIFICADOR DE URLS
    ========================================================================== */
 .verify-section {
     padding: 8rem 0;
@@ -474,7 +469,7 @@ body::after {
 .secure-result h3 { color: #2ecc71; margin-bottom: 0.5rem; font-weight: 700; }
 
 /* ==========================================================================
-   7. FOOTER INSTITUCIONAL REFINADO
+   7. FOOTER INSTITUCIONAL
    ========================================================================== */
 .main-footer {
     background: #02040a;
@@ -538,7 +533,7 @@ body::after {
 }
 
 /* ==========================================================================
-   8. CORREÇÃO DA PARTE DO QUIZ (PRESERVANDO FUNÇÕES DO ANTERIOR)
+   8. ESTRUTURA DO QUIZ
    ========================================================================== */
 .quiz-section { max-width: 750px; margin: 6rem auto; padding: 0 2rem; position: relative; }
 .quiz-container { background: linear-gradient(180deg, #0e1322 0%, #060913 100%); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 3.5rem 3rem; box-shadow: var(--shadow-main); text-align: center; }
@@ -563,7 +558,7 @@ body::after {
 .btn-text-only:hover { color: var(--text-light); }
 
 /* ==========================================================================
-   9. KEYFRAMES ANIMAÇÕES DE AMBIENTE
+   9. ANIMAÇÕES
    ========================================================================== */
 @keyframes aurora {
     0% { transform: translate(0px, 0px) scale(1); }
@@ -573,7 +568,7 @@ body::after {
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ==========================================================================
-   10. RESPONSIVIDADE (MOBILE ADAPTATIVO)
+   10. RESPONSIVIDADE
    ========================================================================== */
 @media (max-width: 992px) {
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 4rem; }
