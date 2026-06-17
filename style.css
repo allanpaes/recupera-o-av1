@@ -1,67 +1,165 @@
+/* Variáveis de Cores - Estilo Cyberpunk / Modo Escuro */
+:root {
+    --bg-color: #0b0c10;
+    --card-bg: #1f2833;
+    --primary: #45f3ff;
+    --secondary: #c5a3ff;
+    --text-main: #c5c6c7;
+    --text-bright: #ffffff;
+}
+
+/* Reset Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #0f172a;
-  color: #e2e8f0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
 }
 
+/* Cabeçalho / Logo */
 header {
-  background: #1e293b;
-  text-align: center;
-  padding: 20px;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  background: #334155;
-  padding: 10px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-section {
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-button {
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  background: #38bdf8;
-  color: black;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #0ea5e9;
-}
-
-.quiz-box {
-  background: #1e293b;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #1e293b;
-  margin-top: 20px;
-}
-
-/* Responsivo */
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-  }
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Seção Hero (Destaque Principal) */
+.hero {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--text-bright);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--secondary);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Seção Interativa (Gerador de Dicas) */
+.interactive-zone {
+    background: linear-gradient(135deg, #1f2833, #151a22);
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(69, 243, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.interactive-zone h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Botão de Ação Interativo */
+.btn-action {
+    background-color: var(--primary);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(69, 243, 255, 0.4);
+}
+
+#box-dica {
+    margin-top: 1.5rem;
+    min-height: 50px;
+    font-style: italic;
+    color: var(--text-bright);
+}
+
+/* Grid de Artigos e Cards */
+.artigos-container {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.artigos-title {
+    color: var(--text-bright);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    border-left: 5px solid var(--secondary);
+    padding-left: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 3rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(197, 198, 199, 0.1);
+    font-size: 0.9rem;
+}
+
+/* Responsividade para Celulares e Tablets */
+@media (max-width: 768px) {
+    .hero h1 { 
+        font-size: 2rem; 
+    }
+    .hero p { 
+        font-size: 1rem; 
+    }
 }
