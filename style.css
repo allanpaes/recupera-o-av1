@@ -1,20 +1,47 @@
-/* Variáveis de Design - Identidade Visual Focada em Segurança */
+/* ==========================================================================
+   1. VARIÁVEIS DE DESIGN & DESIGN SYSTEM
+   ========================================================================== */
 :root {
-    --bg-main: #0a0e17;
-    --bg-card: rgba(22, 32, 49, 0.7);
+    /* Cores Principais (Tema Cyber Security / Cyberpunk Escuro) */
+    --bg-main: #060913;
+    --bg-surface: #0b1120;
+    --bg-card: rgba(15, 23, 42, 0.65);
+    --bg-card-hover: rgba(30, 41, 59, 0.8);
+    
+    /* Cores de Destaque Semântico */
     --accent-danger: #ff4a5a;
+    --accent-danger-glow: rgba(255, 74, 90, 0.3);
     --accent-secure: #00f2fe;
-    --text-muted: #8fa0b5;
+    --accent-secure-glow: rgba(0, 242, 254, 0.3);
+    --accent-warning: #f1c40f;
+    --accent-warning-glow: rgba(241, 196, 15, 0.2);
+    
+    /* Cores de Texto */
     --text-light: #ffffff;
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-dark: #0f172a;
+
+    /* Efeitos de Interface, Bordas e Transições */
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-active: rgba(0, 242, 254, 0.4);
+    --shadow-main: 0 20px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 25px var(--accent-secure-glow);
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
 }
 
-/* Reset Global */
+/* ==========================================================================
+   2. CONFIGURAÇÕES GLOBAIS & ACESSIBILIDADE
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -24,142 +51,561 @@ body {
     overflow-x: hidden;
 }
 
-/* Header & Navegação */
-header {
+/* Fundo Dinâmico Decorativo de Redes Neurais */
+body::before {
+    content: '';
+    position: fixed;
+    top: -250px;
+    right: -250px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 74, 90, 0.06) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Utilitário de Acessibilidade Oculto */
+.sr-only-focusable {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.sr-only-focusable:focus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: auto;
+    height: auto;
+    padding: 1rem;
+    background: var(--accent-secure);
+    color: var(--text-dark);
+    font-weight: bold;
+    z-index: 9999;
+    border-radius: var(--radius-sm);
+}
+
+/* Container de Alinhamento Central */
+.section-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 2rem;
+}
+
+/* Títulos das Seções */
+.center-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.center-title .subtitle {
+    color: var(--accent-secure);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.center-title h2 {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.center-title p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0.5rem auto 0 auto;
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   3. NAVBAR COMPLETA E NAVEGAÇÃO
+   ========================================================================== */
+.main-header {
+    background: rgba(6, 9, 19, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--text-light);
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    color: var(--accent-secure);
+    filter: drop-shadow(0 0 5px var(--accent-secure-glow));
 }
 
 .logo span {
     color: var(--accent-danger);
 }
 
-/* Hero Section (Apresentação do Impacto) */
-.hero {
-    max-width: 900px;
-    margin: 5rem auto;
-    padding: 0 2rem;
-    text-align: center;
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-.hero h1 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    color: var(--text-light);
-    line-height: 1.2;
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.nav-link:hover {
+    color: var(--accent-secure);
+}
+
+/* Botão Destacado na Nav */
+.btn-nav {
+    background: transparent;
+    border: 1px solid var(--accent-secure);
+    color: var(--accent-secure);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-nav:hover {
+    background: var(--accent-secure);
+    color: var(--text-dark);
+    box-shadow: 0 0 15px var(--accent-secure-glow);
+}
+
+/* Hambúrguer Menu (Mobile Toggle) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-light);
+    transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   4. HERO SECTION COM ANIMAÇÃO E LAYOUT SPLIT
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    padding: 7rem 0;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.badge-alert {
+    background: rgba(255, 74, 90, 0.12);
+    border: 1px solid var(--accent-danger);
+    color: var(--accent-danger);
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 1.5rem;
 }
 
-.hero h1 span {
+.hero-content h1 {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: var(--text-light);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-content h1 span {
     background: linear-gradient(90deg, var(--accent-danger), var(--accent-secure));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 750px;
-    margin: 0 auto;
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
 }
 
-/* Seção do Quiz Interativo */
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Botões de Ação Principais */
+.btn-primary, .btn-secondary {
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-secure), #00b4d8);
+    color: var(--text-dark);
+    box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-light);
+}
+
+/* Esfera Tecnológica Decorativa (Lado Direito) */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tech-sphere {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.9) 0%, rgba(6, 9, 19, 0.4) 100%);
+    border: 2px solid var(--border-glass);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-main);
+}
+
+.tech-icon {
+    font-size: 4.5rem;
+    background: linear-gradient(135deg, var(--accent-secure), var(--accent-danger));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rotateBrain 6s ease-in-out infinite alternate;
+}
+
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed var(--accent-secure);
+    border-radius: 50%;
+    animation: spinRing 20s linear infinite;
+}
+
+/* ==========================================================================
+   5. PAINEL DE ESTATÍSTICAS DA DESINFORMAÇÃO
+   ========================================================================== */
+.stats-section {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, transparent, var(--bg-surface), transparent);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(8px);
+}
+
+.stat-card:hover {
+    border-color: var(--border-active);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-main);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--accent-secure);
+    margin-bottom: 1rem;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--text-light);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   6. SIMULADOR GAMIFICADO (QUIZ) AVANÇADO
+   ========================================================================== */
 .quiz-section {
-    max-width: 700px;
-    margin: 4rem auto;
+    max-width: 750px;
+    margin: 6rem auto;
     padding: 0 2rem;
+    position: relative;
 }
 
 .quiz-container {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 3rem 2.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    text-align: center;
+    background: linear-gradient(145deg, #101726, #090d16);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem 3rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+    position: relative;
+    z-index: 2;
 }
 
-.quiz-container h2 {
+.quiz-bg-decor {
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    background: linear-gradient(135deg, var(--accent-danger), var(--accent-secure));
+    z-index: 1;
+    border-radius: calc(var(--radius-lg) + 4px);
+    opacity: 0.15;
+    filter: blur(8px);
+}
+
+.quiz-main-icon {
+    font-size: 2.5rem;
+    color: var(--accent-secure);
+    margin-bottom: 1rem;
+}
+
+.quiz-header h2 {
     color: var(--text-light);
-    margin-bottom: 0.5rem;
-    font-size: 1.6rem;
+    font-size: 2rem;
+    font-weight: 800;
 }
 
 .quiz-sub {
-    font-size: 0.95rem;
-    color: var(--accent-secure);
-    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-danger);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.quiz-intro-text {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Barra de Progresso Arredondada */
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-danger), var(--accent-secure));
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #pergunta-texto {
-    font-size: 1.2rem;
-    color: var(--text-light);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
     margin-bottom: 2rem;
-    min-height: 70px;
+    text-align: left;
+    min-height: 80px;
 }
 
-/* Botões de Opção do Quiz */
+/* Opções Avançadas com Contêiner de Letra */
 .options-grid {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
 }
 
 .btn-option {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--text-light);
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.05rem;
     text-align: left;
     transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .btn-option:hover {
-    background: rgba(0, 242, 254, 0.1);
+    background: rgba(0, 242, 254, 0.04);
     border-color: var(--accent-secure);
-    transform: translateX(5px);
+    transform: translateY(-2px);
 }
 
-/* Resultado do Feedback */
-#feedback {
+.option-letter {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--accent-secure);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+/* Caixa Dinâmica de Feedback */
+.feedback-box {
     margin-top: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
     font-weight: 600;
-    min-height: 30px;
+    text-align: left;
+    border-left: 4px solid transparent;
+}
+
+.feedback-box.correto {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+
+.feedback-box.incorreto {
+    background: rgba(255, 74, 90, 0.1);
+    border-color: var(--accent-danger);
+    color: var(--accent-danger);
+}
+
+.quiz-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#score-tracker {
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+#score-tracker strong {
+    color: var(--accent-secure);
+}
+
+.btn-text-only {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
     transition: var(--transition-smooth);
 }
 
-.correto { color: #2ecc71; }
-.incorreto { color: var(--accent-danger); }
-
-/* Grid de Pilares Educacionais */
-.pilares-section {
-    max-width: 1200px;
-    margin: 6rem auto;
-    padding: 0 2rem;
+.btn-text-only:hover {
+    color: var(--text-light);
 }
 
-.section-title {
-    color: var(--text-light);
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    text-align: center;
+/* ==========================================================================
+   7. MANUAL DE DEFESA DIGITAL (CARDS DE PILARES)
+   ========================================================================== */
+.pilares-section {
+    padding: 6rem 0;
 }
 
 .grid {
@@ -170,34 +616,343 @@ header {
 
 .card {
     background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
+    border: 1px solid var(--border-glass);
+    padding: 3rem 2rem;
+    border-radius: var(--radius-lg);
     transition: var(--transition-smooth);
+    backdrop-filter: blur(8px);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 74, 90, 0.3);
-    box-shadow: 0 15px 30px rgba(255, 74, 90, 0.05);
+.card-icon-wrapper {
+    width: 55px;
+    height: 55px;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
 }
+
+/* Variações de Cores dos Cards Educacionais */
+.card-danger .card-icon-wrapper { background: rgba(255, 74, 90, 0.1); color: var(--accent-danger); }
+.card-warning .card-icon-wrapper { background: rgba(241, 196, 15, 0.1); color: var(--accent-warning); }
+.card-secure .card-icon-wrapper { background: rgba(0, 242, 254, 0.1); color: var(--accent-secure); }
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-main);
+}
+
+.card-danger:hover { border-color: rgba(255, 74, 90, 0.3); }
+.card-warning:hover { border-color: rgba(241, 196, 15, 0.3); }
+.card-secure:hover { border-color: rgba(0, 242, 254, 0.3); }
 
 .card h3 {
     color: var(--text-light);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
 
-/* Rodapé */
-footer {
-    text-align: center;
-    padding: 4rem 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.9rem;
+.card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
 }
 
-/* Ajustes Mobile */
+.card-list {
+    list-style: none;
+}
+
+.card-list li {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-list li i {
+    font-size: 0.8rem;
+    color: var(--accent-secure);
+}
+
+/* ==========================================================================
+   8. SEÇÃO DA COMUNIDADE ESCOLAR (SISTEMA DE TAB-CARDS)
+   ========================================================================== */
+.comunidade-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.4), transparent);
+}
+
+.tab-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.tab-card {
+    background: #0f172a;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    transition: var(--transition-smooth);
+}
+
+.tab-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-active);
+}
+
+.tab-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.tab-card-header i {
+    font-size: 1.8rem;
+    color: var(--accent-secure);
+}
+
+.tab-card h3 {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   9. ANÁLISE HEURÍSTICA DE LINKS (VERIFICADOR)
+   ========================================================================== */
+.verify-section {
+    padding: 6rem 0;
+}
+
+.verify-container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(22, 32, 49, 0.8), rgba(10, 14, 23, 0.9));
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 4rem 3rem;
+    text-align: center;
+    box-shadow: var(--shadow-main);
+}
+
+.verify-content h2 {
+    color: var(--text-light);
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.verify-content p {
+    margin-bottom: 2.5rem;
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.input-group {
+    display: flex;
+    background: #060913;
+    border: 1px solid var(--border-glass);
+    border-radius: 40px;
+    padding: 0.4rem 0.4rem 0.4rem 1.5rem;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.input-group:focus-within {
+    border-color: var(--accent-secure);
+    box-shadow: var(--shadow-glow);
+}
+
+.input-icon {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-light);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.btn-verify {
+    background: var(--accent-secure);
+    color: var(--text-dark);
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    white-space: nowrap;
+}
+
+.btn-verify:hover {
+    background: #00dce6;
+    box-shadow: 0 4px 15px var(--accent-secure-glow);
+}
+
+/* Resultados Dinâmicos da Análise */
+.verify-result-box {
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    text-align: left;
+    border: 1px solid transparent;
+}
+
+.warning-result {
+    background: rgba(255, 74, 90, 0.05);
+    border-color: rgba(255, 74, 90, 0.2);
+}
+
+.warning-result h3 { color: var(--accent-danger); margin-bottom: 0.5rem; }
+
+.secure-result {
+    background: rgba(46, 204, 113, 0.05);
+    border-color: rgba(46, 204, 113, 0.2);
+}
+
+.secure-result h3 { color: #2ecc71; margin-bottom: 0.5rem; }
+
+/* ==========================================================================
+   10. FOOTER CORPORATIVO / INSTITUCIONAL
+   ========================================================================== */
+.main-footer {
+    background: #03050b;
+    border-top: 1px solid var(--border-glass);
+    padding: 5rem 0 2rem 0;
+}
+
+.footer-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+}
+
+.footer-brand .logo { margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.95rem; color: var(--text-muted); max-width: 350px; }
+
+.footer-links h4, .footer-contact h4 {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 0.75rem; }
+
+.footer-links ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+}
+
+.footer-links ul li a:hover { color: var(--accent-secure); }
+
+.footer-contact p { font-size: 0.95rem; margin-bottom: 1rem; }
+
+.social-icons { display: flex; gap: 1rem; }
+
+.social-icons a {
+    width: 38px; height: 38px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.social-icons a:hover {
+    color: var(--accent-secure);
+    border-color: var(--accent-secure);
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   11. KEYFRAMES & ANIMAÇÕES
+   ========================================================================== */
+@keyframes spinRing {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateBrain {
+    0% { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1.05) rotate(5deg); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   12. MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+    .hero-content p { max-width: 650px; margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.2rem; }
-    .quiz-container { padding: 2rem 1.5rem; }
+    .menu-toggle { display: flex; }
+    
+    .nav-menu {
+        position: fixed;
+        top: 73px; left: -100%;
+        width: 100%; height: calc(100vh - 73px);
+        background: var(--bg-surface);
+        transition: 0.4s ease;
+        padding: 3rem 2rem;
+        border-top: 1px solid var(--border-glass);
+    }
+    
+    .nav-menu.open { left: 0; }
+    
+    .nav-menu ul { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    .btn-nav { width: 100%; justify-content: center; }
+    
+    /* Ativação do Menu Mobile Hamburguer */
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .hero-content h1 { font-size: 2.5rem; }
+    .center-title h2 { font-size: 1.8rem; }
+    .quiz-container, .verify-container { padding: 2rem 1.5rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
 }
