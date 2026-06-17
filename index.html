@@ -3,199 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Certo | Cidadania Digital & IA</title>
-    <style>
-        /* CSS Integrado - Estilo Moderno e Fluido */
-        :root {
-            --bg-color: #0b0c10;
-            --card-bg: #1f2833;
-            --primary: #45f3ff;
-            --secondary: #c5a3ff;
-            --text-main: #c5c6c7;
-            --text-bright: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        header {
-            padding: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--text-bright);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--secondary);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-        }
-
-        /* Seção Interativa (JavaScript) */
-        .interactive-zone {
-            background: linear-gradient(135deg, #1f2833, #151a22);
-            max-width: 700px;
-            margin: 3rem auto;
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(69, 243, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .interactive-zone h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .btn-action {
-            background-color: var(--primary);
-            color: var(--bg-color);
-            border: none;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .btn-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(69, 243, 255, 0.4);
-        }
-
-        #box-dica {
-            margin-top: 1.5rem;
-            min-height: 50px;
-            font-style: italic;
-            color: var(--text-bright);
-        }
-
-        /* Grid de Artigos */
-        .artigos-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .artigos-title {
-            color: var(--text-bright);
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            border-left: 5px solid var(--secondary);
-            padding-left: 10px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--text-bright);
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(197, 198, 199, 0.1);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-        }
-    </style>
+    <title>Cidadania Digital & IA | Detector de Desinformação</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">Prompt Certo //</div>
+        <div class="logo">Guarda<span>Digital</span></div>
     </header>
 
     <main>
         <section class="hero">
-            <h1>A IA cria o conteúdo, mas quem dita as regras do jogo é <span>você</span>.</h1>
-            <p>A internet mudou, e as IAs mudaram a internet. Não dá mais para navegar no piloto automático. Nossa missão é te dar o controle remoto dessa tecnologia: aprender a usar prompts como um profissional, proteger sua privacidade e usar a inteligência artificial para crescer, sem deixar que ela use você.</p>
+            <h1>O Impacto das <span>Deepfakes</span> e da Desinformação na Sociedade</h1>
+            <p>A tecnologia evoluiu, e os riscos também. Mídias manipuladas por inteligência artificial e fake news automatizadas desafiam nossa percepção da realidade. Descubra como blindar sua mente e sua comunidade escolar contra as armadilhas digitais.</p>
         </section>
 
-        <section class="interactive-zone">
-            <h3>Pílula de Conhecimento</h3>
-            <p>Precisa de um norte agora? Clique no botão para gerar uma dica rápida de cidadania digital ou engenharia de prompt.</p>
-            <p id="box-dica">Clique abaixo para gerar uma dica...</p>
-            <button class="btn-action" onclick="gerarDica()">Mandar Dica</button>
+        <section class="quiz-section">
+            <div class="quiz-container">
+                <h2>Simulador Fato ou Fake</h2>
+                <div class="quiz-sub">Treine seu olho crítico</div>
+                <p id="pergunta-texto">Carregando situação real...</p>
+                
+                <div id="opcoes-container" class="options-grid">
+                    </div>
+                
+                <div id="feedback"></div>
+            </div>
         </section>
 
-        <section class="artigos-container">
-            <h2 class="artigos-title">Guias de Sobrevivência</h2>
+        <section class="pilares-section">
+            <h2 class="section-title">Guia de Sobrevivência Escolar</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>1. Guia do Prompt Perfeito</h3>
-                    <p>Como conversar com IAs para estudar 10x mais rápido, estruturar resumos e organizar sua rotina sem perder a sua originalidade.</p>
+                    <h3>Como identificar Deepfakes?</h3>
+                    <p>Fique atento aos detalhes: bordas do rosto borradas, piscadas de olhos artificiais ou ausentes, falhas na sincronia dos lábios com o áudio e iluminação inconsistente em vídeos de redes sociais.</p>
                 </div>
                 <div class="card">
-                    <h3>2. Detetive de Deepfakes</h3>
-                    <p>Técnicas simples e ferramentas cruciais para descobrir se aquele vídeo ou áudio bombástico é real ou gerado por robôs.</p>
+                    <h3>O Perigo das Fake News por IA</h3>
+                    <p>IAs conseguem gerar milhares de artigos falsos convincentes por minuto. Não confie apenas em textos bem escritos; cheque sempre o domínio do site e se a notícia possui fontes reais.</p>
                 </div>
                 <div class="card">
-                    <h3>3. Sua Pegada na Rede</h3>
-                    <p>O que as IAs generativas estão aprendendo com as fotos, textos e posts que você joga na internet todos os dias?</p>
+                    <h3>Boas Práticas de Segurança</h3>
+                    <p>Nunca compartilhe conteúdos alarmistas sem antes fazer uma busca reversa. Proteja sua própria imagem evitando publicar fotos de fardas ou locais privados que possam treinar IAs maliciosas.</p>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 GuardaDigital - Consciência e Segurança no Ambiente Escolar.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
