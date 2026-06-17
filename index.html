@@ -3,240 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GuardaDigital | Cidadania Digital, Deepfakes e Ética em IA</title>
-    <meta name="description" content="Portal educacional interativo focado na conscientização sobre desinformação, deepfakes e boas práticas de cidadania digital para a comunidade escolar.">
-    <meta name="keywords" content="Cidadania Digital, Inteligência Artificial, Deepfakes, Fake News, Segurança Escolar">
+    <title>GuardaDigital | Hub de Segurança</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <a href="#conteudo-principal" class="sr-only-focusable">Pular para o conteúdo principal</a>
-
     <header class="main-header">
         <div class="header-container">
-            <div class="logo" role="img" aria-label="GuardaDigital Logo">
-                <i class="fa-solid fa-shield-halved logo-icon"></i>Guarda<span>Digital</span>
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i>Guarda<span>Digital</span>
             </div>
-            <nav class="nav-menu" aria-label="Menu Principal">
+            <nav class="nav-menu">
                 <ul>
-                    <li><a href="#simulador" class="nav-link"><i class="fa-solid fa-gamepad"></i> Simulador</a></li>
-                    <li><a href="#dados" class="nav-link"><i class="fa-solid fa-chart-bar"></i> Impacto</a></li>
-                    <li><a href="#diretrizes" class="nav-link"><i class="fa-solid fa-book-open"></i> Guias</a></li>
-                    <li><a href="#comunidade" class="nav-link"><i class="fa-solid fa-users"></i> Comunidade</a></li>
-                    <li><a href="#verificar" class="nav-link btn-nav"><i class="fa-solid fa-magnifying-glass"></i> Validar Link</a></li>
+                    <li><a href="#simulador" class="nav-link active"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
+                    <li><a href="#dados" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Dados</a></li>
+                    <li><a href="#diretrizes" class="nav-link"><i class="fa-solid fa-shield"></i> Guia</a></li>
+                    <li><a href="#verificar" class="nav-link btn-nav"><i class="fa-solid fa-wand-magic-sparkles"></i> Validar Link</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Abrir Menu de Navegação" aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
         </div>
     </header>
 
-    <main id="conteudo-principal">
-
-        <section class="hero-section" id="inicio">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <span class="badge-alert"><i class="fa-solid fa-circle-exclamation"></i> Alerta Digital 2026</span>
-                    <h1>O Impacto das <span>Deepfakes</span> e da Desinformação na Sociedade</h1>
-                    <p>A tecnologia evoluiu, e os riscos também. Algoritmos avançados e mídias geradas por Inteligência Artificial desafiam nossa percepção da verdade. Aprenda a blindar sua mente, identificar manipulações e proteger o ambiente escolar das armadilhas da rede.</p>
-                    <div class="hero-actions">
-                        <a href="#simulador" class="btn-primary"><i class="fa-solid fa-play"></i> Iniciar Simulador</a>
-                        <a href="#diretrizes" class="btn-secondary"><i class="fa-solid fa-download"></i> Baixar Cartilha PDF</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="tech-sphere">
-                        <i class="fa-solid fa-brain tech-icon"></i>
-                    </div>
-                </div>
-            </div>
+    <main class="main-layout">
+        
+        <section class="hero-clean">
+            <span class="badge-tech">Cybersecurity 2026</span>
+            <h1>Proteção Inteligente contra <span>Deepfakes</span></h1>
+            <p>Monitore, teste e blinde sua percepção contra manipulações digitais em segundos.</p>
         </section>
 
-        <section class="stats-section" id="dados">
-            <div class="section-container">
-                <div class="center-title">
-                    <span class="subtitle">Cenário Atual</span>
-                    <h2>A Desinformação em Números</h2>
-                    <p>Entenda o tamanho do desafio enfrentado pelas redes de ensino e pela sociedade na era da IA generativa.</p>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-                        <div class="stat-number" data-target="900">0%</div>
-                        <p class="stat-desc">De aumento na circulação de vídeos e áudios manipulados por deepfakes nos últimos dois anos.</p>
+        <div class="dashboard-grid">
+            
+            <section class="dashboard-card quiz-card" id="simulador">
+                <div class="card-header-clean">
+                    <div class="title-area">
+                        <h2>Simulador Real-Time</h2>
+                        <span id="score-tracker"><i class="fa-solid fa-bolt"></i> <strong>0</strong> EXP</span>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fa-solid fa-share-nodes"></i></div>
-                        <div class="stat-number" data-target="7">0x</div>
-                        <p class="stat-desc">Mais rápido é o engajamento e compartilhamento de uma fake news automatizada comparada a um fato real.</p>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progresso-quiz"></div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div class="stat-number" data-target="82">0%</div>
-                        <p class="stat-desc">Dos jovens em idade escolar sentem dificuldade em diferenciar um perfil real de um bot de IA nas redes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="quiz-section" id="simulador">
-            <div class="quiz-container">
-                <div class="quiz-header">
-                    <i class="fa-solid fa-robot quiz-main-icon"></i>
-                    <h2>Simulador Fato ou Fake</h2>
-                    <div class="quiz-sub">Desenvolva seu Olho Crítico</div>
-                    <p class="quiz-intro-text">Analise as situações cotidianas abaixo. Nem tudo o que brilha na tela é verdade. Você consegue identificar o algoritmo te manipulando?</p>
                 </div>
                 
-                <div class="progress-bar-container" aria-label="Progresso do quiz">
-                    <div class="progress-bar-fill" id="progresso-quiz" style="width: 0%;"></div>
-                </div>
-
                 <div class="quiz-body">
-                    <p id="pergunta-texto" aria-live="polite">Carregando a próxima situação do ambiente escolar...</p>
-                    <div id="opcoes-container" class="options-grid"></div>
-                    <div id="feedback" class="feedback-box" role="alert" aria-live="assertive" style="display: none;"></div>
+                    <p id="pergunta-texto">Carregando cenário...</p>
+                    <div id="opcoes-container" class="options-stack"></div>
+                    <div id="feedback" class="feedback-box" style="display: none;"></div>
                 </div>
 
-                <div class="quiz-footer">
-                    <span id="score-tracker"><i class="fa-solid fa-bolt"></i> EXP Cidadão: <strong>0</strong></span>
-                    <button id="btn-pular" class="btn-text-only" onclick="pularQuestao()">Pular Situação <i class="fa-solid fa-forward"></i></button>
+                <div class="quiz-footer-clean">
+                    <button id="btn-pular" class="btn-action-secondary" onclick="pularQuestao()">Pular <i class="fa-solid fa-forward"></i></button>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="pilares-section" id="diretrizes">
-            <div class="section-container">
-                <div class="center-title">
-                    <span class="subtitle">Conhecimento Prático</span>
-                    <h2>Manual de Defesa Digital</h2>
-                    <p>Estratégias diretas e acionáveis recomendadas por especialistas em segurança cibernética e educação.</p>
+            <section class="dashboard-card verify-card" id="verificar">
+                <div class="card-header-clean">
+                    <h2>Scanner de Links</h2>
+                    <p class="subtitle">Heurística de segurança instantânea</p>
                 </div>
-                <div class="grid">
-                    <article class="card card-danger">
-                        <div class="card-icon-wrapper"><i class="fa-solid fa-eye"></i></div>
-                        <h3>Como identificar Deepfakes?</h3>
-                        <p>Fique atento aos pequenos erros do algoritmo: bordas do rosto levemente borradas, piscadas de olhos ausentes ou sem ritmo natural, falhas de sincronia entre os lábios e o áudio, e sombras estranhas.</p>
-                        <ul class="card-list">
-                            <li><i class="fa-solid fa-check"></i> Avalie reflexos nos olhos</li>
-                            <li><i class="fa-solid fa-check"></i> Note cortes abruptos de áudio</li>
-                        </ul>
-                    </article>
-                    
-                    <article class="card card-warning">
-                        <div class="card-icon-wrapper"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                        <h3>Perigo das Fake News por IA</h3>
-                        <p>As ferramentas de IA generativa produzem mentiras estruturadas e textos impecáveis em massa. Não confie apenas em formatações bonitas ou linguajar técnico. Verifique sistematicamente o link de origem.</p>
-                        <ul class="card-list">
-                            <li><i class="fa-solid fa-check"></i> Cheque o domínio da URL (.com.br)</li>
-                            <li><i class="fa-solid fa-check"></i> Busque as fontes primárias citadas</li>
-                        </ul>
-                    </article>
-                    
-                    <article class="card card-secure">
-                        <div class="card-icon-wrapper"><i class="fa-solid fa-lock"></i></div>
-                        <h3>Boas Práticas de Segurança</h3>
-                        <p>Evite o compartilhamento por impulso. Pratique a pausa reflexiva antes de repassar correntes alarmistas. Proteja seus próprios dados biométricos evitando postar fotos de altíssima resolução.</p>
-                        <ul class="card-list">
-                            <li><i class="fa-solid fa-check"></i> Nunca use dados pessoais em prompts</li>
-                            <li><i class="fa-solid fa-check"></i> Aplique autenticação em duas etapas</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="comunidade-section" id="comunidade">
-            <div class="section-container">
-                <div class="center-title">
-                    <span class="subtitle">Ação Coletiva</span>
-                    <h2>Orientações para Cada Perfil</h2>
-                    <p>O combate à manipulação midiática exige o esforço coordenado de todos os agentes do ecossistema escolar.</p>
-                </div>
-                <div class="tabs-container">
-                    <div class="tab-cards-grid">
-                        <div class="tab-card">
-                            <div class="card-icon-wrapper" style="background: rgba(0, 242, 254, 0.1); color: var(--accent-secure);">
-                                <i class="fa-solid fa-user-graduate"></i>
-                            </div>
-                            <h3>Para Alunos</h3>
-                            <p>Use a IA para expandir sua criatividade e estudo, nunca como fonte absoluta de verdades. Seja o revisor crítico de tudo o que a máquina entrega e evite repassar mídias duvidosas.</p>
-                        </div>
-                        <div class="tab-card">
-                            <div class="card-icon-wrapper" style="background: rgba(255, 183, 3, 0.1); color: var(--accent-warning);">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </div>
-                            <h3>Para Professores</h3>
-                            <p>Integre debates sobre letramento midiático nas suas disciplinas. Ensine os estudantes a realizarem pesquisas robustas e a identificarem erros de alucinação de dados em ferramentas de IA.</p>
-                        </div>
-                        <div class="tab-card">
-                            <div class="card-icon-wrapper" style="background: rgba(255, 51, 68, 0.1); color: var(--accent-danger);">
-                                <i class="fa-solid fa-children"></i>
-                            </div>
-                            <h3>Para os Pais</h3>
-                            <p>Mantenha um canal de diálogo aberto sobre o ecossistema digital dos filhos. Monitore mudanças abruptas de comportamento ligadas a vazamentos de dados ou cyberbullying.</p>
-                        </div>
+                
+                <form id="form-verificador" onsubmit="analisarUrl(event)">
+                    <div class="input-glow-group">
+                        <i class="fa-solid fa-link"></i>
+                        <input type="text" id="url-input" placeholder="Cole a URL ou link suspeito aqui..." required>
+                        <button type="submit" class="btn-action-primary">Analisar</button>
                     </div>
-                </div>
-            </div>
+                </form>
+                
+                <div id="resultado-verificacao" class="verify-result-box" style="display: none;"></div>
+            </section>
+
+        </div>
+
+        <section class="quick-stats" id="dados">
+            <div class="stat-bubble"><strong>+900%</strong> de Deepfakes na Web</div>
+            <div class="stat-bubble"><strong>7x mais</strong> cliques em Fake News</div>
+            <div class="stat-bubble"><strong>82% dos jovens</strong> caem em Bots</div>
         </section>
 
-        <section class="verify-section" id="verificar">
-            <div class="verify-container">
-                <div class="verify-content">
-                    <h2>Desconfia de algum link ou notícia?</h2>
-                    <p>Cole o endereço URL ou o título do artigo abaixo para submeter a nossa simulação de verificação heurística e receber orientações de segurança instantâneas.</p>
-                    <form id="form-verificador" onsubmit="analisarUrl(event)">
-                        <div class="input-group">
-                            <i class="fa-solid fa-link input-icon"></i>
-                            <input type="text" id="url-input" placeholder="Cole a URL suspeita aqui (ex: http://noticia-urgente-fake.com)..." required aria-label="URL suspeita">
-                            <button type="submit" class="btn-verify">Analisar Link</button>
-                        </div>
-                    </form>
-                    <div id="resultado-verificacao" class="verify-result-box" style="display: none;"></div>
-                </div>
+        <section class="compact-guide" id="diretrizes">
+            <h2>Guia de Bolso</h2>
+            <div class="guide-row">
+                <div class="guide-item"><i class="fa-solid fa-eye text-danger"></i> <span><strong>Olhe a pele/olhos:</strong> IAs erram texturas e sombras na face.</span></div>
+                <div class="guide-item"><i class="fa-solid fa-link text-warning"></i> <span><strong>Domínios bizarros:</strong> Links com finais .xyz ou .info são cilada.</span></div>
+                <div class="guide-item"><i class="fa-solid fa-lock text-secure"></i> <span><strong>Pausa reflexiva:</strong> Não compartilhe nada por impulso emocional.</span></div>
             </div>
         </section>
 
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <div class="logo"><i class="fa-solid fa-shield-halved"></i>Guarda<span>Digital</span></div>
-                <p>Promovendo a verdade, a ética e a segurança da informação dentro e fora das salas de aula na era da Inteligência Artificial.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Links Úteis</h4>
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#simulador">Testes Interativos</a></li>
-                    <li><a href="#diretrizes">Políticas de Privacidade</a></li>
-                    <li><a href="https://www.gov.br" target="_blank" rel="noopener">Guias Oficiais Federais</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contato & Apoio</h4>
-                <p><i class="fa-solid fa-envelope"></i> suporte@guardadigital.edu.br</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 GuardaDigital. Desenvolvido para feiras de ciências e projetos de conscientização escolar tecnológica. Todos os direitos reservados.</p>
-        </div>
+    <footer class="minimal-footer">
+        <p>&copy; 2026 GuardaDigital &bull; Proteção de Dados e Identidade</p>
     </footer>
 
-    <script src="script.js"></script>
-</body>
-</html>
     <script src="script.js"></script>
 </body>
 </html>
