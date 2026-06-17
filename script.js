@@ -1,9 +1,8 @@
 /**
  * GuardaDigital - Sistema de Inteligência Interativa do Portal
- * Focado em Cidadania Digital, Combate a Deepfakes e Letramento Midiático.
  */
 
-// 1. BANCO DE DADOS EXPANDIDO DO QUIZ (SITUAÇÕES DO COTIDIANO ESCOLAR)
+// 1. BANCO DE DADOS DO QUIZ
 const questoesQuiz = [
     {
         situacao: "Você recebeu um vídeo do diretor da escola no WhatsApp suspendendo as aulas amanhã, mas a voz dele parece ligeiramente robótica e com pausas estranhas. O que fazer?",
@@ -52,21 +51,48 @@ const questoesQuiz = [
     }
 ];
 
-// 2. VARIÁVEIS DE ESTADO DO SISTEMA
+// DATA BANK DO NOVO RECURSO: GLOSSÁRIO
+const bancoGlossario = [
+    { termo: "Deepfake", icone: "fa-face-smile-wink", desc: "Mídias (vídeos, imagens ou áudios) geradas por algoritmos de Aprendizado de Máquina profunda que imitam perfeitamente a imagem e a voz de pessoas reais em situações falsas." },
+    { termo: "Phishing", icone: "fa-fish-fins", desc: "Técnica criminosa de engenharia social voltada a pescar dados pessoais confidenciais (senhas, documentos) através de links falsificados urgentes ou alarmistas." },
+    { termo: "Alucinação de IA", icone: "fa-wand-magic-sparkles", desc: "Fenômeno em que modelos de linguagem generativa inventam fatos históricos, leis, estatísticas ou fontes falsas com total convicção gramatical." },
+    { termo: "Letramento Midiático", icone: "fa-graduation-cap", desc: "Conjunto de habilidades para acessar, analisar de forma crítica, avaliar o viés e criar conteúdos seguros em mídias digitais variadas." }
+];
+
+// VARIÁVEIS DE ESTADO
 let indiceAtual = 0;
 let pontuacao = parseInt(localStorage.getItem('guarda_score')) || 0;
 let quizRespondido = false;
 let temporizadorTransicao;
 
-// 3. EVENTO DE INICIALIZAÇÃO DA PÁGINA
+// INICIALIZAÇÃO
 window.addEventListener('DOMContentLoaded', () => {
     carregarQuestao();
     atualizarPlacarInterface();
     inicializarMenuMobile();
     inicializarAnimacaoEstatisticas();
+    inicializarGlossario();
+    executarEfeitoDigitacao();
 });
 
-// 4. LÓGICA DO SIMULADOR (QUIZ INTERATIVO COM DESIGN RESPONSIVO)
+// EFEITO DE DIGITAÇÃO NO HERO
+function executarEfeitoDigitacao() {
+    const titulo = document.getElementById("typing-hero");
+    if (!titulo) return;
+    const textoCompleto = "Segurança Máxima Contra a Desinformação Escolar";
+    titulo.innerHTML = "";
+    let i = 0;
+    function digitar() {
+        if (i < textoCompleto.length) {
+            titulo.innerHTML += textoCompleto.charAt(i);
+            i++;
+            setTimeout(digitar, 40);
+        }
+    }
+    digitar();
+}
+
+// LÓGICA DO SIMULADOR (QUIZ)
 function carregarQuestao() {
     quizRespondido = false;
     if (temporizadorTransicao) clearTimeout(temporizadorTransicao);
@@ -77,13 +103,8 @@ function carregarQuestao() {
     feedbackEl.style.display = "none";
 
     const questaoAtual = questoesQuiz[indiceAtual];
-    
-    // Animação suave de fade no texto da pergunta
     const perguntaEl = document.getElementById("pergunta-texto");
-    perguntaEl.classList.remove("animate-fade-in");
-    void perguntaEl.offsetWidth; // Trigger reflow para resetar animação
     perguntaEl.innerText = questaoAtual.situacao;
-    perguntaEl.classList.add("animate-fade-in");
 
     const containerOpcoes = document.getElementById("opcoes-container");
     containerOpcoes.innerHTML = "";
@@ -91,9 +112,8 @@ function carregarQuestao() {
     questaoAtual.opcoes.forEach((opcao, index) => {
         const botao = document.createElement("button");
         botao.className = "btn-option animate-fade-in";
-        botao.style.animationDelay = `${index * 0.1}s`; // Efeito cascata nos botões
+        botao.style.animationDelay = `${index * 0.1}s`;
         botao.innerHTML = `<span class="option-letter">${index === 0 ? 'A' : 'B'}</span> <span>${opcao}</span>`;
-        botao.setAttribute("role", "button");
         botao.onclick = () => verificarResposta(index, botao);
         containerOpcoes.appendChild(botao);
     });
@@ -111,37 +131,27 @@ function verificarResposta(indiceSelecionado, botaoClicado) {
 
     botoes.forEach(btn => {
         btn.style.pointerEvents = "none";
-        btn.style.opacity = "0.4"; // Esmaece as opções não selecionadas
+        btn.style.opacity = "0.4";
     });
     botaoClicado.style.opacity = "1";
 
     if (indiceSelecionado === questaoAtual.correta) {
-        // Estilização premium via JS casada com as variáveis CSS
         botaoClicado.style.borderColor = "#2ecc71";
         botaoClicado.style.background = "rgba(46, 204, 113, 0.08)";
-        botaoClicado.style.boxShadow = "0 0 20px rgba(46, 204, 113, 0.15)";
-        
         feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${questaoAtual.explicacao}`;
         feedbackEl.className = "feedback-box correto animate-fade-in";
-        
         pontuacao += 10;
         localStorage.setItem('guarda_score', pontuacao);
         atualizarPlacarInterface();
     } else {
         botaoClicado.style.borderColor = "var(--accent-danger)";
         botaoClicado.style.background = "rgba(255, 51, 68, 0.08)";
-        botaoClicado.style.boxShadow = "0 0 20px rgba(255, 51, 68, 0.15)";
-        
-        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> <strong>Ação de risco identificada!</strong> Esse comportamento propaga pânico e desinformação no ambiente acadêmico.`;
+        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> <strong>Ação de risco identificada!</strong> Esse comportamento propaga pânico no ecossistema escolar.`;
         feedbackEl.className = "feedback-box incorreto animate-fade-in";
     }
 
     feedbackEl.style.display = "block";
-
-    // Próxima questão de forma fluida após 5 segundos
-    temporizadorTransicao = setTimeout(() => {
-        proximaQuestao();
-    }, 5000);
+    temporizadorTransicao = setTimeout(proximaQuestao, 5000);
 }
 
 function proximaQuestao() {
@@ -149,134 +159,66 @@ function proximaQuestao() {
     carregarQuestao();
 }
 
-function pularQuestao() {
-    proximaQuestao();
-}
+function pularQuestao() { proximaQuestao(); }
 
 function atualizarBarraProgresso() {
-    const barraProgresso = document.getElementById("progresso-quiz");
-    if (barraProgresso) {
-        const calculoPercentual = ((indiceAtual) / questoesQuiz.length) * 100;
-        barraProgresso.style.width = `${calculoPercentual}%`;
-    }
+    const barra = document.getElementById("progresso-quiz");
+    if (barra) barra.style.width = `${(indiceAtual / questoesQuiz.length) * 100}%`;
 }
 
 function atualizarPlacarInterface() {
     const placar = document.getElementById("score-tracker");
-    if (placar) {
-        placar.innerHTML = `<i class="fa-solid fa-bolt" style="color: var(--accent-secure);"></i> EXP Cidadão: <strong>${pontuacao}</strong>`;
-    }
+    if (placar) placar.innerHTML = `<i class="fa-solid fa-bolt" style="color: var(--accent-secure);"></i> EXP Cidadão: <strong>${pontuacao}</strong>`;
 }
 
-// 5. ANALISADOR DE LINKS EDUCAÇÃO (MOCK HEURÍSTICO REFINADO VAZIO/ANIMAÇÃO)
-function analisarUrl(event) {
+// NOVO RECURSO: INICIALIZAÇÃO DO GLOSSÁRIO INTERATIVO
+function inicializarGlossario() {
+    const tabsContainer = document.getElementById("glossario-tabs-container");
+    if (!tabsContainer) return;
+    tabsContainer.innerHTML = "";
+
+    bancoGlossario.forEach((item, index) => {
+        const btn = document.createElement("button");
+        btn.className = "btn-glossario";
+        btn.innerHTML = `<span><i class="fa-solid ${item.icone}"></i> ${item.termo}</span> <i class="fa-solid fa-chevron-right"></i>`;
+        btn.onclick = () => exibirTermoGlossario(index, btn);
+        tabsContainer.appendChild(btn);
+    });
+}
+
+function exibirTermoGlossario(index, botaoAtivo) {
+    const botoes = document.querySelectorAll(".btn-glossario");
+    botoes.forEach(b => b.classList.remove("active"));
+    botaoAtivo.classList.add("active");
+
+    const displayBox = document.getElementById("glossario-content-box");
+    const dados = bancoGlossario[index];
+
+    displayBox.innerHTML = `
+        <div class="tab-card animate-fade-in" style="border-left: 4px solid var(--accent-secure);">
+            <h3><i class="fa-solid ${dados.icone}" style="color: var(--accent-secure);"></i> ${dados.termo}</h3>
+            <p>${dados.desc}</p>
+        </div>
+    `;
+}
+
+// NOVO RECURSO: SIMULAÇÃO DA CENTRAL DE REPORTAR DENÚNCIAS
+function enviarDenuncia(event) {
     event.preventDefault();
-    const inputElement = document.getElementById("url-input");
-    const urlInput = inputElement.value.trim().toLowerCase();
-    const resultadoBox = document.getElementById("resultado-verificacao");
+    const tipo = document.getElementById("denuncia-tipo").value;
+    const plataforma = document.getElementById("denuncia-plataforma").value;
+    const detalhes = document.getElementById("denuncia-detalhes").value;
+    const boxResultado = document.getElementById("resultado-denuncia");
+
+    boxResultado.style.display = "block";
+    boxResultado.className = "verify-result-box secure-result animate-fade-in";
     
-    if (!urlInput) {
-        resultadoBox.style.display = "block";
-        resultadoBox.className = "verify-result-box warning-result animate-fade-in";
-        resultadoBox.innerHTML = "<p><i class='fa-solid fa-circle-exclamation'></i> Insira uma URL ou endereço de link válido para executar os testes estruturais.</p>";
-        return;
-    }
+    // Gera ID randômico de protocolo simulado
+    const protocoloId = Math.floor(100000 + Math.random() * 900000);
 
-    resultadoBox.style.display = "block";
-    resultadoBox.className = "verify-result-box animate-fade-in";
-    resultadoBox.style.borderLeft = "4px solid var(--accent-secure)";
-    resultadoBox.innerHTML = `<p><i class='fa-solid fa-circle-notch fa-spin' style='color: var(--accent-secure)'></i> Desestruturando DNS e varrendo indexações artificiais...</p>`;
-
-    setTimeout(() => {
-        const termosSuspeitos = [".xyz", ".info", "urgente", "bomba", "noticia-fake", "ganhe-gratis", "vagas-imediatas", "clique-aqui"];
-        let scoreSuspeito = 0;
-
-        termosSuspeitos.forEach(termo => {
-            if (urlInput.includes(termo)) scoreSuspeito++;
-        });
-
-        if (urlInput.includes(".gov.br") || urlInput.includes(".edu.br")) {
-            resultadoBox.className = "verify-result-box secure-result animate-fade-in";
-            resultadoBox.innerHTML = `
-                <h3><i class="fa-solid fa-shield-check"></i> Ambiente Altamente Confiável</h3>
-                <p>A terminação <strong>.gov.br</strong> ou <strong>.edu.br</strong> garante blindagem institucional oficial brasileira. O conteúdo provém de canais governamentais ou universitários legítimos.</p>
-            `;
-        } else if (scoreSuspeito > 0 || !urlInput.includes(".com") && !urlInput.includes(".org") && !urlInput.includes(".net")) {
-            resultadoBox.className = "verify-result-box warning-result animate-fade-in";
-            resultadoBox.innerHTML = `
-                <h3><i class="fa-solid fa-triangle-exclamation"></i> Arquitetura Suspeita Detectada</h3>
-                <p>A estrutura usa domínios de baixo custo comumente associados à replicação automatizada de desinformação por bots. <strong>Atenção máxima:</strong> evite clicar e cruze as informações em portais consolidados.</p>
-            `;
-        } else {
-            resultadoBox.className = "verify-result-box secure-result animate-fade-in";
-            resultadoBox.style.borderLeft = "4px solid var(--accent-warning)";
-            resultadoBox.innerHTML = `
-                <h3><i class="fa-solid fa-circle-question" style="color: var(--accent-warning)"></i> Domínio Geral Padrão</h3>
-                <p>O link mapeia um servidor comercial padrão estável. Lembre-se de que agentes mal-intencionados podem clonar layouts conhecidos. Certifique-se de validar se o autor do artigo é de confiança.</p>
-            `;
-        }
-    }, 1400);
-}
-
-// 6. CONTROLE DA BARRA DE NAVEGAÇÃO MOBILE (MENU HAMBÚRGUER FLUIDO)
-function inicializarMenuMobile() {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".nav-menu");
-    const linksNav = document.querySelectorAll(".nav-link");
-
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener("click", () => {
-            const expandido = menuToggle.getAttribute("aria-expanded") === "true";
-            menuToggle.setAttribute("aria-expanded", !expandido);
-            menuToggle.classList.toggle("active");
-            navMenu.classList.toggle("open");
-        });
-
-        linksNav.forEach(link => {
-            link.addEventListener("click", () => {
-                menuToggle.setAttribute("aria-expanded", "false");
-                menuToggle.classList.remove("active");
-                navMenu.classList.remove("open");
-            });
-        });
-    }
-}
-
-// 7. ANIMAÇÃO DE CONTADORES NUMÉRICOS COM INTERSECTION OBSERVER
-function inicializarAnimacaoEstatisticas() {
-    const elementosContadores = document.querySelectorAll(".stat-number");
-    
-    if ('IntersectionObserver' in window) {
-        const observadorCrescimento = new IntersectionObserver((entradas, observador) => {
-            entradas.forEach(entrada => {
-                if (entrada.isIntersecting) {
-                    const elemento = entrada.target;
-                    const alvo = parseInt(elemento.getAttribute("data-target")) || 0;
-                    const sufixo = elemento.innerText.includes("%") ? "%" : (elemento.innerText.includes("x") ? "x" : "");
-                    
-                    let contagemAtual = 0;
-                    const passos = 40; 
-                    const incremento = alvo / passos;
-                    
-                    const intervaloContagem = setInterval(() => {
-                        contagemAtual += incremento;
-                        if (contagemAtual >= alvo) {
-                            elemento.innerText = alvo + sufixo;
-                            clearInterval(intervaloContagem);
-                        } else {
-                            elemento.innerText = Math.floor(contagemAtual) + sufixo;
-                        }
-                    }, 25);
-                    
-                    observador.unobserve(elemento);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        elementosContadores.forEach(num => observadorCrescimento.observe(num));
-    }
-}
-
-        elementosContadores.forEach(num => observadorCrescimento.observe(num));
-    }
-}
+    boxResultado.innerHTML = `
+        <h3><i class="fa-solid fa-shield-halved"></i> Protocolo #${protocoloId} Emitido com Sucesso!</h3>
+        <p style="margin-top:0.5rem; color: var(--text-main);"><strong>Plano de Contenção Acionado:</strong></p>
+        <ul style="margin: 1rem 0; padding-left: 1.2rem; font-size:0.95rem;">
+            <li>Evidências criptografadas localmente para auditoria.</li>
+            <li>Notificação encaminhada preventivamente à Ouvidoria e TI
