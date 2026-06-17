@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cidadania Digital e IA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Cidadania Digital e Inteligência Artificial</h1>
+    <p>Deepfakes, Fake News e o impacto na sociedade</p>
+  </header>
+
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#deepfakes">Deepfakes</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#dicas">Dicas</a>
+  </nav>
+
+  <section id="sobre">
+    <h2>O que é Cidadania Digital?</h2>
+    <p>
+      Cidadania digital é o uso responsável, ético e seguro da tecnologia e da internet.
+      Envolve saber identificar informações falsas e proteger dados pessoais.
+    </p>
+  </section>
+
+  <section id="deepfakes">
+    <h2>O perigo dos Deepfakes</h2>
+    <p>
+      Deepfakes são vídeos, áudios ou imagens criados por inteligência artificial que imitam pessoas reais.
+      Eles podem ser usados para espalhar desinformação.
+    </p>
+
+    <button onclick="mostrarExemplo()">Ver alerta de deepfake</button>
+    <p id="alerta"></p>
+  </section>
+
+  <section id="quiz">
+    <h2>Quiz: Você sabe identificar fake news?</h2>
+
+    <div class="quiz-box">
+      <p>Uma notícia sem fonte confiável deve ser compartilhada?</p>
+      <button onclick="responder(false)">Sim</button>
+      <button onclick="responder(true)">Não</button>
+      <p id="resultado"></p>
+    </div>
+  </section>
+
+  <section id="dicas">
+    <h2>Dicas de segurança digital</h2>
+    <ul>
+      <li>Verifique a fonte da informação</li>
+      <li>Desconfie de notícias sensacionalistas</li>
+      <li>Não compartilhe sem confirmar</li>
+      <li>Use sites confiáveis</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Projeto educativo - Cidadania Digital e IA</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
