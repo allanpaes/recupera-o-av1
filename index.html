@@ -38,6 +38,7 @@
     <main id="conteudo-principal">
 
         <section class="hero-section" id="inicio">
+            <div class="hero-overlay"></div>
             <div class="hero-container">
                 <div class="hero-content">
                     <span class="badge-alert"><i class="fa-solid fa-circle-exclamation"></i> Alerta Digital 2026</span>
@@ -50,6 +51,7 @@
                 </div>
                 <div class="hero-visual">
                     <div class="tech-sphere">
+                        <div class="pulse-ring"></div>
                         <i class="fa-solid fa-brain tech-icon"></i>
                     </div>
                 </div>
@@ -66,17 +68,17 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-                        <div class="stat-number" data-target="900">0%</div>
+                        <div class="stat-number" data-target="900">900%</div>
                         <p class="stat-desc">De aumento na circulação de vídeos e áudios manipulados por deepfakes nos últimos dois anos.</p>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fa-solid fa-share-nodes"></i></div>
-                        <div class="stat-number" data-target="7">0x</div>
+                        <div class="stat-number" data-target="7">7x</div>
                         <p class="stat-desc">Mais rápido é o engajamento e compartilhamento de uma fake news automatizada comparada a um fato real.</p>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div class="stat-number" data-target="82">0%</div>
+                        <div class="stat-number" data-target="82">82%</div>
                         <p class="stat-desc">Dos jovens em idade escolar sentem dificuldade em diferenciar um perfil real de um bot de IA nas redes.</p>
                     </div>
                 </div>
@@ -84,6 +86,7 @@
         </section>
 
         <section class="quiz-section" id="simulador">
+            <div class="quiz-bg-decor shadow-glow"></div>
             <div class="quiz-container">
                 <div class="quiz-header">
                     <i class="fa-solid fa-robot quiz-main-icon"></i>
@@ -98,12 +101,13 @@
 
                 <div class="quiz-body">
                     <p id="pergunta-texto" aria-live="polite">Carregando a próxima situação do ambiente escolar...</p>
-                    <div id="opcoes-container" class="options-grid"></div>
-                    <div id="feedback" class="feedback-box" role="alert" aria-live="assertive" style="display: none;"></div>
+                    <div id="opcoes-container" class="options-grid">
+                        </div>
+                    <div id="feedback" class="feedback-box" role="alert" aria-live="assertive"></div>
                 </div>
 
                 <div class="quiz-footer">
-                    <span id="score-tracker"><i class="fa-solid fa-bolt"></i> EXP Cidadão: <strong>0</strong></span>
+                    <span id="score-tracker"><i class="fa-solid fa-star"></i> Pontuação: <strong>0</strong></span>
                     <button id="btn-pular" class="btn-text-only" onclick="pularQuestao()">Pular Situação <i class="fa-solid fa-forward"></i></button>
                 </div>
             </div>
@@ -120,7 +124,7 @@
                     <article class="card card-danger">
                         <div class="card-icon-wrapper"><i class="fa-solid fa-eye"></i></div>
                         <h3>Como identificar Deepfakes?</h3>
-                        <p>Fique atento aos pequenos erros do algoritmo: bordas do rosto levemente borradas, piscadas de olhos ausentes ou sem ritmo natural, falhas de sincronia entre os lábios e o áudio, e sombras estranhas.</p>
+                        <p>Fique atento aos pequenos erros do algoritmo: bordas do rosto levemente borradas, piscadas de olhos ausentes ou sem ritmo natural, falhas de sincronia entre os lábios e o áudio, e sombras estranhas que não acompanham os movimentos da cabeça.</p>
                         <ul class="card-list">
                             <li><i class="fa-solid fa-check"></i> Avalie reflexos nos olhos</li>
                             <li><i class="fa-solid fa-check"></i> Note cortes abruptos de áudio</li>
@@ -130,7 +134,7 @@
                     <article class="card card-warning">
                         <div class="card-icon-wrapper"><i class="fa-solid fa-triangle-exclamation"></i></div>
                         <h3>Perigo das Fake News por IA</h3>
-                        <p>As ferramentas de IA generativa produzem mentiras estruturadas e textos impecáveis em massa. Não confie apenas em formatações bonitas ou linguajar técnico. Verifique sistematicamente o link de origem.</p>
+                        <p>As ferramentas de IA generativa produzem mentiras estruturadas e textos impecáveis em massa. Não confie apenas em formatações bonitas ou linguajar técnico. Verifique sistematicamente o link de origem e busque a confirmação em agências de checagem confiáveis.</p>
                         <ul class="card-list">
                             <li><i class="fa-solid fa-check"></i> Cheque o domínio da URL (.com.br)</li>
                             <li><i class="fa-solid fa-check"></i> Busque as fontes primárias citadas</li>
@@ -140,7 +144,7 @@
                     <article class="card card-secure">
                         <div class="card-icon-wrapper"><i class="fa-solid fa-lock"></i></div>
                         <h3>Boas Práticas de Segurança</h3>
-                        <p>Evite o compartilhamento por impulso. Pratique a pausa reflexiva antes de repassar correntes alarmistas. Proteja seus próprios dados biométricos evitando postar fotos de altíssima resolução.</p>
+                        <p>Evite o compartilhamento por impulso. Pratique a pausa reflexiva antes de repassar correntes alarmistas em grupos da turma. Proteja seus próprios dados biométricos evitando postar fotos de alta resolução do rosto e dados de geolocalização exata da escola.</p>
                         <ul class="card-list">
                             <li><i class="fa-solid fa-check"></i> Nunca use dados pessoais em prompts</li>
                             <li><i class="fa-solid fa-check"></i> Aplique autenticação em duas etapas</li>
@@ -155,30 +159,30 @@
                 <div class="center-title">
                     <span class="subtitle">Ação Coletiva</span>
                     <h2>Orientações para Cada Perfil</h2>
-                    <p>O combate à manipulação midiática exige o esforço coordenado de todos os agentes do ecossistema escolar.</p>
+                    <p>O combate à manipulação midiática exige o effort coordenado de todos os agentes do ecossistema escolar.</p>
                 </div>
                 <div class="tabs-container">
                     <div class="tab-cards-grid">
                         <div class="tab-card">
-                            <div class="card-icon-wrapper" style="background: rgba(0, 242, 254, 0.1); color: var(--accent-secure);">
+                            <div class="tab-card-header">
                                 <i class="fa-solid fa-user-graduate"></i>
+                                <h3>Para Alunos</h3>
                             </div>
-                            <h3>Para Alunos</h3>
-                            <p>Use a IA para expandir sua criatividade e estudo, nunca como fonte absoluta de verdades. Seja o revisor crítico de tudo o que a máquina entrega e evite repassar mídias duvidosas.</p>
+                            <p>Use a IA para expandir sua criatividade e estudo, nunca como fonte absoluta de verdades. Seja o revisor crítico de tudo o que a máquina entrega e evite linchamentos virtuais baseados em mídias duvidosas.</p>
                         </div>
                         <div class="tab-card">
-                            <div class="card-icon-wrapper" style="background: rgba(255, 183, 3, 0.1); color: var(--accent-warning);">
+                            <div class="tab-card-header">
                                 <i class="fa-solid fa-chalkboard-user"></i>
+                                <h3>Para Professores</h3>
                             </div>
-                            <h3>Para Professores</h3>
-                            <p>Integre debates sobre letramento midiático nas suas disciplinas. Ensine os estudantes a realizarem pesquisas robustas e a identificarem erros de alucinação de dados em ferramentas de IA.</p>
+                            <p>Integre debates sobre letramento midiático nas suas disciplinas. Ensine os estudantes a realizarem pesquisas bibliográficas robustas e a identificarem vieses ideológicos ou erros de alucinação de dados em ferramentas de IA.</p>
                         </div>
                         <div class="tab-card">
-                            <div class="card-icon-wrapper" style="background: rgba(255, 51, 68, 0.1); color: var(--accent-danger);">
+                            <div class="tab-card-header">
                                 <i class="fa-solid fa-children"></i>
+                                <h3>Para os Pais</h3>
                             </div>
-                            <h3>Para os Pais</h3>
-                            <p>Mantenha um canal de diálogo aberto sobre o ecossistema digital dos filhos. Monitore mudanças abruptas de comportamento ligadas a vazamentos de dados ou cyberbullying.</p>
+                            <p>Mantenha um canal de diálogo aberto sobre o ecossistema digital dos filhos. Monitore mudanças abruptas de comportamento ligadas a vazamentos de dados ou cyberbullying alimentado por ferramentas de montagem automatizada.</p>
                         </div>
                     </div>
                 </div>
